@@ -13,30 +13,41 @@
 
 - Config.yaml allows you to append any services and paths you would like to keep tabs on
 - Internal System check will check if the file path exist before trying to calculate the hash
+- Out-of-Box cross platform support with MacOS, Windows and Linux systems
 
-<h2>Getting Started</h2>
-<h4>1. Activate Your Vitural Environment</h4>
+<h2>Getting Started: Windows</h2>
+<h4>1. Clone the repo into a directory of your choice an activate your Virtural Environment</h4>
 
 ```
-python3 -venv .venv
+python3 -m venv .venv
 ```
-<b> You may check if your vitural environment is enabled by using the command below </b>
+
+<b> After activating your Virtual Environment ensure you have the latest version of pip3 installed. </b>
 ```
-pip -V
+pip3 --version
+
+&
+
+# This command will install the latest version of pip
+
+python3 -m pip install --upgrade pip 
 ```
 
 <h4>2. Install the required packages</h4>
 
 ```
+# This installs the packages required to run this program using requirements.txt to install of the required dependencies 
+
 pip install -r requipments.txt
 ```
 
-<b> This will install all of the neccessary packages needed to run this project. </b>
+<p>NOTE: This will install all of the neccessary packages needed to run this project. </p>
 
-<h4>3. Add the name of the target service and the path to any file in config.yaml.</h4>
+<h4>3. Modify Config.yaml to include the of the target service and the path to any file or log you'd like to generate the SHA256 hash for.</h4>
 
 ```
-# Config.yaml EXAMPLE as demonstrated in this project
+# Config.yaml as demonstrated for the 'Getting Started' Example | OS: Windows 10
+# Feel free to modify this Config.yaml to your liking
 
 targeted_services:
   Rufus install: C:\Users\smoke\Downloads\rufus-4.9.exe
@@ -45,7 +56,11 @@ targeted_services:
 <h4>4. Execute main.py from its root dir to output the hash value</h4>
 
 ```
-# EXAMPLE of the output running from my machine given that config.yaml looks like:
+python3 main.py
+```
+
+```
+# EXAMPLE of the output running from a Windows 10 machine given the config shown:
 
 targeted_services:
   Rufus install: C:\Users\smoke\Downloads\rufus-4.9.exe
@@ -58,3 +73,71 @@ Here's an example of what the output would look like given the Configuration sho
 497f796e6d076d4855d697965c04626e6d3624658fce3eca82ab14f7414eede2
 2025-08-16 14:51 - INFO - Calculated hashes successfully for: ['Rufus install']
 ```
+
+<h2>Getting Started: MacOS</h2>
+
+<h4>1. Clone the repo into a directory of your choice an activate your Virtural Environment</h4>
+
+```
+python3 -m venv .venv
+```
+
+<b> After activating your Virtual Environment ensure you have the latest version of pip3 installed. </b>
+```
+pip3 --version
+
+&
+
+# This command will install the latest version of pip
+
+python3 -m pip install --upgrade pip 
+```
+
+
+<h4>2. Install the required packages</h4>
+
+```
+# This installs the packages required to run this program using requirements.txt to install of the required dependencies 
+
+pip install -r requipments.txt
+```
+
+<p>NOTE: This will install all of the neccessary packages needed to run this project. </p>
+
+<h4>3. Modify Config.yaml to include the of the target service and the path to any file or log you'd like to generate the SHA256 hash for.</h4>
+
+```
+# Config.yaml as demonstrated for the 'Getting Started' Example | OS: MacOS
+# Feel free to modify this Config.yaml to your liking
+
+targeted_services:
+  service_name: /Users/admin/Documents/File Integrity Checker/File-Integrity-Checker/test.txt
+  Proton Install: /Users/admin/Downloads/ProtonDrive-1.16.0.dmg
+```
+
+<img width="887" height="158" alt="Screenshot 2025-08-17 at 4 25 23 PM" src="https://github.com/user-attachments/assets/2f08705b-2cce-4a0e-8503-3bc88e7fbc97" />
+
+<h4>4. Execute main.py from its root dir to output the hash value</h4>
+
+```
+python3 main.py
+```
+
+```
+# EXAMPLE of the output running from my MacOS machice given the config.yaml shown
+
+targeted_services:
+  service_name: /Users/admin/Documents/File Integrity Checker/File-Integrity-Checker/test.txt
+  Proton Install: /Users/admin/Downloads/ProtonDrive-1.16.0.dmg
+```
+
+Here's an example of what the output would look like given the Configuration shown above:
+
+```
+2025-08-16 14:51 - INFO - rufus-4.9.exe exist as a file in system
+497f796e6d076d4855d697965c04626e6d3624658fce3eca82ab14f7414eede2
+2025-08-16 14:51 - INFO - Calculated hashes successfully for: ['Rufus install']
+```
+
+<img width="881" height="76" alt="Screenshot 2025-08-17 at 4 27 59 PM" src="https://github.com/user-attachments/assets/70e52a3d-8dcf-478b-b46c-956ca923ba7a" />
+
