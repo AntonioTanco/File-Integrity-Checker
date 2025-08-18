@@ -1,0 +1,15 @@
+{
+    "hostname": "DESKTOP-1LIL0IH",
+    "targeted_services": [
+        "Rufus install",
+        "Cryptomator install"
+    ],
+    "targeted_paths": [
+        "C:\\Users\\smoke\\Downloads\\rufus-4.9.exe",
+        "C:\\Users\\smoke\\Downloads\\Cryptomator-1.17.0-x64.exe"
+    ],
+    "hashes_generated": [
+        "497f796e6d076d4855d697965c04626e6d3624658fce3eca82ab14f7414eede2",
+        "3799ec3ff5b17b3a2c24630753e3f1be988addc0e56372ec011ef195b6264ba6"
+    ]
+}
