@@ -6,16 +6,16 @@ from Utils.logs import logging
 YAML_FILE_NAME = 'config.yaml'
 
 # Delaring config_data
-config_data = {
-    # config.yaml
-    # sample-syntax 
-    #"targeted_services":
-    #   "sample_service_name": path_to_service_logs (str)
-    "targeted_services":
-    {
-        "service_name": r"C:\Users\smoke\Documents\File Integrity Checker\test.txt"
-    }
-}
+# config_data = {
+#     # config.yaml
+#     # sample-syntax 
+#     #"targeted_services":
+#     #   "sample_service_name": path_to_service_logs (str)
+#     "targeted_services":
+#     {
+#         "service_name": r"C:\Users\smoke\Documents\File Integrity Checker\test.txt"
+#     }
+# }
 
 # Check if YAML Config does not exist
 if not os.path.exists(YAML_FILE_NAME):
