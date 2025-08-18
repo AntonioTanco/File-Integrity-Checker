@@ -8,3 +8,5 @@ print(f"Version: {UNAME_INFO.version}")
 print(f"Machine: {UNAME_INFO.machine}")
 print(f"Processor: {UNAME_INFO.processor}")
 
+def get_nodes_name():
+    return UNAME_INFO.node
