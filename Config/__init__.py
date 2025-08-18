@@ -7,7 +7,7 @@ from typing import List
 # Declaring name for YAML Config
 YAML_FILE_NAME = 'config.yaml'
 
-
+# OLD YAML IMPLEMENTATION
 # Delaring config_data
 # config_data = {
 #     # config.yaml
@@ -22,12 +22,17 @@ YAML_FILE_NAME = 'config.yaml'
 
 # Declearing a new dataclasses to structure config.yaml
 
-# TargetedServiceConfig will be used to structure data into another dataclass for structure and type safety
+# Defining TargetedServiceConfig data structure for type safety
 @dataclass
 class TargetedServiceConfig():
     service_name: str
     service_files: List[str]
-    
+
+# Defining YAMLCONFIG data structure 
+@dataclass
+class YAMLCONFIG():
+    targeted_services: List[TargetedServiceConfig]
+
 # Check if YAML Config does not exist
 if not os.path.exists(YAML_FILE_NAME):
     
