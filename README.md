@@ -134,9 +134,11 @@ targeted_services:
 Here's an example of what the output would look like given the Configuration shown above:
 
 ```
-2025-08-16 14:51 - INFO - rufus-4.9.exe exist as a file in system
-497f796e6d076d4855d697965c04626e6d3624658fce3eca82ab14f7414eede2
-2025-08-16 14:51 - INFO - Calculated hashes successfully for: ['Rufus install']
+2025-08-17 16:23 - INFO - test.txt exist as a file in system
+2025-08-17 16:23 - INFO - ProtonDrive-1.16.0.dmg exist as a file in system
+e360f6bd84402ee941de1b3e7956f4cc843766a83e312b83389bbdbdb8946b78
+7276fa2c6a040969a74958ba54c671792232b69a0768359bf80ff378b607e43c
+2025-08-17 16:23 - INFO - Calculated hashes successfully for: ['service_name', 'Proton Install']
 ```
 
 <img width="881" height="76" alt="Screenshot 2025-08-17 at 4 27 59 PM" src="https://github.com/user-attachments/assets/70e52a3d-8dcf-478b-b46c-956ca923ba7a" />
