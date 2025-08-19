@@ -14,8 +14,12 @@ def readYamlConfig():
             
             data = Config.yaml.safe_load(file)
 
+            # print(data)
+
             # closes the YAML file
-            file.close()
+            # file.close()
+
+            return data
 
     # Except FileNotFoundError if YAML was missing at program execution 
     except FileNotFoundError as e:
@@ -26,38 +30,65 @@ def readYamlConfig():
 
     # returns contents of config.yaml
 
-    return data
+    # return data
 
 def getServicesLogPaths():
 
     # Reading YAML Config in var for later use 
     data = readYamlConfig()
 
+    # print(type(data['targeted_services']))
+
     # Checking if data['targeted_services'] is a dict
-    if isinstance(data['targeted_services'], dict):
+    # if isinstance(data['targeted_services'], list):
 
         # Storing the paths to the logs into a list
-        found_service_log_path = list(data['targeted_services'].values())
+    found_services = list(data['targeted_services'])
+    found_services_paths = []
+
+    for service in found_services:
+        for paths in service['service_files']:
+            
+            found_services_paths.append(paths)
+
+    return found_services_paths
+
+
+        # for paths in service.values():
+
+        #     if isinstance(paths, list):
+    
+            #    found_services_paths.append(paths)
+    # print(found_services_paths)
 
         # Checks values are present within YAML 
-        if found_service_log_path is not None:
+        # if found_service_log_path is not None:
 
-            # Returning list of found paths for all services present in YAML
-            return found_service_log_path
+        #     # Returning list of found paths for all services present in YAML
+        #     return found_service_log_path
         
 def getServicesName():
 
     # Reading YAML Config in var for later use 
     data = readYamlConfig()
 
+    found_services = list(data['targeted_services'])
+    found_services_names = []
+
+    for service in found_services:
+        # for service_names in service['service_name']:
+        found_services_names.append(service['service_name'])
+
+    return found_services_names
+
     # Checking if data['targeted_services'] is a dict
-    if isinstance(data['targeted_services'], dict):
+    # if isinstance(data['targeted_services'], dict):
 
-        # Storing the keys of data['targeted_services'] in new list var
-        found_service_names = list(data['targeted_services'].keys())
+    #     # Storing the keys of data['targeted_services'] in new list var
+    #     found_service_names = list(data['targeted_services'].keys())
 
-        # Checks that the list in not Empty
-        if found_service_names is not None:
+    #     # Checks that the list in not Empty
+    #     if found_service_names is not None:
 
-            # Returns list of service names defined by User
-            return found_service_names 
+    #         # Returns list of service names defined by User
+    #         return found_service_names 
