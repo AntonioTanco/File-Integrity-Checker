@@ -35,7 +35,13 @@ class yamlconfig():
 
 # Check if YAML Config does not exist
 if not os.path.exists(YAML_FILE_NAME):
+
+    sample_data = [TargetedServiceConfig(service_name="test_service", service_files=["SAMPLE/PATH"])]
+
     
+    
+    yaml_config = asdict(yamlconfig(targeted_services=sample_data))
+
     # Try-Except the operation of creating a new YAML Config
     try:
 
