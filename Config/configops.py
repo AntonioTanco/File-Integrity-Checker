@@ -74,8 +74,8 @@ def getServicesName():
     #     # Storing the keys of data['targeted_services'] in new list var
     #     found_service_names = list(data['targeted_services'].keys())
 
-        # Checks that the list in not Empty
-        if found_service_names is not None:
+    #     # Checks that the list in not Empty
+    #     if found_service_names is not None:
 
             # Returns list of service names defined by User
             return found_service_names 
