@@ -68,6 +68,15 @@ def getServicesName():
     # Reading YAML Config in var for later use 
     data = readYamlConfig()
 
+    found_services = list(data['targeted_services'])
+    found_services_names = []
+
+    for service in found_services:
+        # for service_names in service['service_name']:
+        found_services_names.append(service['service_name'])
+
+    return found_services_names
+
     # Checking if data['targeted_services'] is a dict
     # if isinstance(data['targeted_services'], dict):
 
