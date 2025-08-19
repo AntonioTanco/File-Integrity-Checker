@@ -15,7 +15,9 @@ def readYamlConfig():
             data = Config.yaml.safe_load(file)
 
             # closes the YAML file
-            file.close()
+            # file.close()
+
+            return data
 
     # Except FileNotFoundError if YAML was missing at program execution 
     except FileNotFoundError as e:
