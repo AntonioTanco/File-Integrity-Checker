@@ -23,7 +23,7 @@ def run_hash_computation():
     if file_path_exist == True:
         
     #     # calculate and return hash of all the files present in YAML Config
-    #     cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
+        cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
 
     #     operations = _json.Jsonlog(hostname=get_nodes_name(), 
     #                                targeted_paths=TARGETED_LOG_FILE, 
