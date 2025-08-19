@@ -10,7 +10,7 @@ import Utils.system.check_if_file_exist as system
 TARGETED_LOG_FILE = config.getServicesLogPaths()
 
 # use getServicesName() from config to store a list of paths to files from CONFIG.YAML
-# TARGETED_SERVICE_NAMES = config.getServicesName()
+TARGETED_SERVICE_NAMES = config.getServicesName()
 
 # run check on TARGETED_LOG_FILE to see if files exist within the system
 # file_path_exist = system.check_if_file_exist(TARGETED_LOG_FILE)
