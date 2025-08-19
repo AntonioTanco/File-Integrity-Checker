@@ -39,7 +39,23 @@ def getServicesLogPaths():
     if isinstance(data['targeted_services'], dict):
 
         # Storing the paths to the logs into a list
-        found_service_log_path = list(data['targeted_services'].values())
+    found_services = list(data['targeted_services'])
+    found_services_paths = []
+
+    for service in found_services:
+        for paths in service['service_files']:
+            
+            found_services_paths.append(paths)
+
+    return found_services_paths
+
+
+        # for paths in service.values():
+
+        #     if isinstance(paths, list):
+    
+            #    found_services_paths.append(paths)
+    # print(found_services_paths)
 
         # Checks values are present within YAML 
         if found_service_log_path is not None:
