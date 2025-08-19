@@ -20,7 +20,7 @@ def run_hash_computation():
 
     config.readYamlConfig()
     # Checking if files listed in YAML Config exist within the system
-    # if file_path_exist == True:
+    if file_path_exist == True:
         
     #     # calculate and return hash of all the files present in YAML Config
     #     cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
