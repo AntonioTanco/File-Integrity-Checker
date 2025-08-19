@@ -28,7 +28,7 @@ def readYamlConfig():
 
     # returns contents of config.yaml
 
-    return data
+    # return data
 
 def getServicesLogPaths():
 
