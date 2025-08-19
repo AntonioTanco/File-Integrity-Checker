@@ -43,7 +43,9 @@ if not os.path.exists(YAML_FILE_NAME):
         with open(YAML_FILE_NAME, 'w') as file:
 
             # Creating data var to dump 'config_data' into YAML file named: YAML_FILE_NAME
-            data = yaml.dump(config_data, yamlfile, default_flow_style=False)
+            yaml.safe_dump(yaml_config, file)
+
+            # yamlfile.write(data)
 
             # Logging to console the YAML file was created
             logging.INFO(f"{yamlfile.name()} was created.")
