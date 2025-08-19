@@ -60,8 +60,8 @@ def getServicesLogPaths():
         # Checks values are present within YAML 
         # if found_service_log_path is not None:
 
-            # Returning list of found paths for all services present in YAML
-            return found_service_log_path
+        #     # Returning list of found paths for all services present in YAML
+        #     return found_service_log_path
         
 def getServicesName():
 
