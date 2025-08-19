@@ -69,7 +69,7 @@ def getServicesName():
     data = readYamlConfig()
 
     # Checking if data['targeted_services'] is a dict
-    if isinstance(data['targeted_services'], dict):
+    # if isinstance(data['targeted_services'], dict):
 
         # Storing the keys of data['targeted_services'] in new list var
         found_service_names = list(data['targeted_services'].keys())
