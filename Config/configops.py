@@ -36,7 +36,7 @@ def getServicesLogPaths():
     data = readYamlConfig()
 
     # Checking if data['targeted_services'] is a dict
-    if isinstance(data['targeted_services'], dict):
+    # if isinstance(data['targeted_services'], list):
 
         # Storing the paths to the logs into a list
     found_services = list(data['targeted_services'])
