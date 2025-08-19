@@ -26,7 +26,7 @@ YAML_FILE_NAME = 'config.yaml'
 @dataclass
 class TargetedServiceConfig():
     service_name: str
-    service_files: List[str]
+    service_files: List[str] = field(default_factory=list)
 
 # Defining YAMLCONFIG data structure 
 @dataclass
