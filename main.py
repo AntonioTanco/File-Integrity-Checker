@@ -18,6 +18,7 @@ file_path_exist = system.check_if_file_exist(TARGETED_LOG_FILE)
 # Creating function to run hash computation on program execution
 def run_hash_computation():
 
+    config.readYamlConfig()
     # Checking if files listed in YAML Config exist within the system
     # if file_path_exist == True:
         
