@@ -25,10 +25,10 @@ def run_hash_computation():
     #     # calculate and return hash of all the files present in YAML Config
         cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
 
-    #     operations = _json.Jsonlog(hostname=get_nodes_name(), 
-    #                                targeted_paths=TARGETED_LOG_FILE, 
-    #                                targeted_services=TARGETED_SERVICE_NAMES, 
-    #                                hashes_generated=cal_hash)
+        operations = _json.Jsonlog(hostname=get_nodes_name(), 
+                                   targeted_paths=TARGETED_LOG_FILE, 
+                                   targeted_services=TARGETED_SERVICE_NAMES, 
+                                   hashes_generated=cal_hash)
 
     #     log.write_to_json(operations)
 
