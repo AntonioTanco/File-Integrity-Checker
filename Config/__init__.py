@@ -29,8 +29,8 @@ class TargetedServiceConfig():
     service_files: List[str] = field(default_factory=list)
 
 # Defining YAMLCONFIG data structure 
-@dataclass
-class YAMLCONFIG():
+@dataclass()
+class yamlconfig():
     targeted_services: List[TargetedServiceConfig]
 
 # Check if YAML Config does not exist
