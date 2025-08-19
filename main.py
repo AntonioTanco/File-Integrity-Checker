@@ -5,7 +5,6 @@ import Config.json.jsonops as log
 import Utils.logs as syslog
 from Utils.system import get_nodes_name
 import Utils.system.check_if_file_exist as system
-
 # use getServicesLogPaths() from config to store a list of paths to files from CONFIG.YAML
 TARGETED_LOG_FILE = config.getServicesLogPaths()
 
@@ -30,7 +29,7 @@ def run_hash_computation():
                                    targeted_services=TARGETED_SERVICE_NAMES, 
                                    hashes_generated=cal_hash)
 
-    #     log.write_to_json(operations)
+        log.write_to_json(operations)
 
     print("test")
 

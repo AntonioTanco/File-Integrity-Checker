@@ -14,6 +14,8 @@ def readYamlConfig():
             
             data = Config.yaml.safe_load(file)
 
+            # print(data)
+
             # closes the YAML file
             # file.close()
 
@@ -34,6 +36,8 @@ def getServicesLogPaths():
 
     # Reading YAML Config in var for later use 
     data = readYamlConfig()
+
+    # print(type(data['targeted_services']))
 
     # Checking if data['targeted_services'] is a dict
     # if isinstance(data['targeted_services'], list):
