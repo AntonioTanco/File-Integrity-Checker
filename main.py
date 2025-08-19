@@ -13,7 +13,7 @@ TARGETED_LOG_FILE = config.getServicesLogPaths()
 TARGETED_SERVICE_NAMES = config.getServicesName()
 
 # run check on TARGETED_LOG_FILE to see if files exist within the system
-# file_path_exist = system.check_if_file_exist(TARGETED_LOG_FILE)
+file_path_exist = system.check_if_file_exist(TARGETED_LOG_FILE)
 
 # Creating function to run hash computation on program execution
 def run_hash_computation():
