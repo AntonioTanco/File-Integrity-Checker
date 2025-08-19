@@ -18,11 +18,14 @@
 - 📦 Out-of-Box cross platform support with MacOS, Windows and Linux systems
 - 🎉 Output gets parsed into a readable JSON File called: Integrity_logs.json
 
-<h5>Libraries Used:</h5>
-- Hasblib: https://docs.python.org/3/library/hashlib.html
-- Pathlib: https://docs.python.org/3/library/pathlib.html
-- PyYaml: https://pyyaml.org/wiki/PyYAMLDocumentation
+<h4>Python Libraries Used:</h4>
 
+- Hasblib: https://docs.python.org/3/library/hashlib.html
+
+- Pathlib: https://docs.python.org/3/library/pathlib.html
+  
+- PyYaml: https://pyyaml.org/wiki/PyYAMLDocumentation
+</br>
 <h2>Getting Started: Windows</h2>
 <h4>1. Clone the repo into a directory of your choice an activate your Virtural Environment</h4>
 
