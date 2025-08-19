@@ -54,7 +54,7 @@ if not os.path.exists(YAML_FILE_NAME):
             # yamlfile.write(data)
 
             # Logging to console the YAML file was created
-            logging.INFO(f"{yamlfile.name()} was created.")
+            logging.info(f"{YAML_FILE_NAME} was created.")
 
             # Closing the file after it has been written to
             yamlfile.close()
