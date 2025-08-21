@@ -21,8 +21,9 @@ def run_hash_computation():
     config.readYamlConfig()
     # Checking if files listed in YAML Config exist within the system
     if file_path_exist == True:
-        
-    #     # calculate and return hash of all the files present in YAML Config
+
+        hashops_uuid = generate_random_uuid()
+        # calculate and return hash of all the files present in YAML Config
         cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
 
         operations = _json.Jsonlog(hostname=get_nodes_name(), 
