@@ -17,3 +17,4 @@ def write_to_json(data):
     except Exception as e:
 
         print(f"Something went wrong with this operation | Error {e}")
+
