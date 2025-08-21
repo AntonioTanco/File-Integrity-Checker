@@ -1,5 +1,5 @@
 from . import json
-from . import json_log_filepath
+from . import JSON_LOG_DIRECTORY
 from .jsondata import Jsonlog
 from dataclasses import asdict
 
@@ -13,7 +13,7 @@ def write_to_json(data):
     try:
 
         # Open JSON filepath | found in __init__.py
-        with open(json_log_filepath, 'w', encoding='utf-8') as file:
+        with open(JSON_LOG_DIRECTORY, 'w', encoding='utf-8') as file:
 
 
             # Write to JSON file
@@ -32,7 +32,7 @@ def read_json_log():
 
     try:
 
-        with open(json_log_filepath, 'r', encoding='utf-8') as json:
+        with open(JSON_LOG_DIRECTORY, 'r', encoding='utf-8') as json:
 
             _json_data = json.read()
 
