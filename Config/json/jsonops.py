@@ -27,15 +27,19 @@ def write_to_json(data):
 
         print(f"Something went wrong with this operation | Error {e}")
 
-
+# function to read JSON file
 def read_json_log():
 
+    # Try - Except block for open json file operation
     try:
 
+        # Open JSON using JSON_LOG_DIR var as json
         with open(JSON_LOG_DIRECTORY, 'r', encoding='utf-8') as json:
-
+            
+            # store json data in _json_data to return
             _json_data = json.read()
 
+            # return _json_data
             return _json_data
         
     except Exception as e:
