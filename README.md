@@ -12,9 +12,9 @@
 <h3>Project Features</h3>
 
 - 📝 Config.yaml allows you to append any services and paths you would like to keep tabs on
-  - Read more about [Config.yaml](##About-Config.yaml) below
+  - Read more about how [Config.yaml](https://github.com/AntonioTanco/File-Integrity-Checker?tab=readme-ov-file#about-configyaml) works below
 - 🔍 Internal System check will check if the file path exist before trying to calculate the hash
-  - Read more about the [Internal System Check](##About-Config.yaml) below
+  - Read more about the [Internal System Check](https://github.com/AntonioTanco/File-Integrity-Checker/tree/main#about-the-internal-system-check) below
 - 📦 Out-of-Box cross platform support with MacOS, Windows and Linux systems
 - 🎉 Output gets parsed into a readable JSON File called: Integrity_logs.json
 
