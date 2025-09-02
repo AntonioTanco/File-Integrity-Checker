@@ -1,2 +1,4 @@
 targeted_services:
-  service_name: C:\Users\smoke\Documents\File Integrity Checker\test.txt
+- service_files:
+  - C:\Users\smoke\Documents\File Integrity Checker\test.txt
+  service_name: test_service
