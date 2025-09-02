@@ -6,6 +6,7 @@ from typing import List
 
 @dataclass
 class Jsonlog:
+    UUID: str
     hostname: str
     targeted_services: List[str]
     targeted_paths: List[str]
