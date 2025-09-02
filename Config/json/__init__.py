@@ -12,8 +12,6 @@ json_log_directory.mkdir(exist_ok=True)
 
 json_log_filepath = json_log_directory / jSON_LOG_FILENAME
 
-print(json_log_filepath)
-
 if not json_log_filepath.exists():
 
     json_log_filepath.write_text(json.dumps({}, indent=4))
