@@ -13,9 +13,8 @@ def write_to_json(data):
     try:
 
         # Open JSON filepath | found in __init__.py
-        with open(JSON_LOG_DIRECTORY, 'w', encoding='utf-8') as file:
-
-
+        with open(json_log_filepath, 'w', encoding='utf-8') as file:
+            
             # Write to JSON file
             file.write(json.dumps(data_dict, indent=4))
 
@@ -25,7 +24,7 @@ def write_to_json(data):
     # Catch Exception if something went wrong with the operation
     except Exception as e:
 
-        print(f"Something went wrong with this operation | Error {e}")
+        print(f"Error when writing to JSON Log file | Error {e}")
 
 # function to read JSON file
 def read_json_log():
@@ -34,7 +33,7 @@ def read_json_log():
     try:
 
         # Open JSON using JSON_LOG_DIR var as json
-        with open(JSON_LOG_DIRECTORY, 'r', encoding='utf-8') as json:
+        with open(json_log_filepath, 'r', encoding='utf-8') as json:
             
             # store json data in _json_data to return
             _json_data = json.read()
