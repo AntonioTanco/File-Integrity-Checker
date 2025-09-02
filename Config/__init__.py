@@ -7,21 +7,6 @@ from typing import List
 # Declaring name for YAML Config
 YAML_FILE_NAME = 'config.yaml'
 
-# OLD YAML IMPLEMENTATION
-# Delaring config_data
-# config_data = {
-#     # config.yaml
-#     # sample-syntax 
-#     #"targeted_services":
-#     #   "sample_service_name": path_to_service_logs (str)
-#     "targeted_services":
-#     {
-#         "service_name": r"C:\Users\smoke\Documents\File Integrity Checker\test.txt"
-#     }
-# }
-
-# Declearing a new dataclasses to structure config.yaml
-
 # Defining TargetedServiceConfig data structure for type safety
 @dataclass
 class TargetedServiceConfig():
