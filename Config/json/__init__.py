@@ -14,6 +14,7 @@ json_log_filepath = json_log_directory / jSON_LOG_FILENAME
 
 if not json_log_filepath.exists():
 
+    # json_log_filepath.touch()
     json_log_filepath.write_text(json.dumps({}, indent=4))
 
 # elif json_log_filepath.exists():
