@@ -1,7 +1,7 @@
 import Utils.hashing.hashops as hash
 import Config.configops as config
 import Config.json.jsondata as _json
-import Config.json.jsonops as log
+import Config.json.jsonops as json
 import Utils.logs as syslog
 from Utils.uuid import generate_random_uuid
 from Utils.system import get_nodes_name
@@ -32,7 +32,7 @@ def run_hash_computation():
                                    targeted_services=TARGETED_SERVICE_NAMES, 
                                    hashes_generated=cal_hash)
 
-        log.write_to_json(operations)
+        json.write_to_json(operations)
 
     print("test")
 
