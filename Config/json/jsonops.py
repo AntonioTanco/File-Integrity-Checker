@@ -1,5 +1,5 @@
 from . import json
-from . import JSON_LOG_DIRECTORY
+from . import json_log_filepath
 from .jsondata import Jsonlog
 from dataclasses import asdict
 

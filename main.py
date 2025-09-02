@@ -6,6 +6,7 @@ import Utils.logs as syslog
 from Utils.uuid import generate_random_uuid
 from Utils.system import get_nodes_name
 import Utils.system.check_if_file_exist as system
+
 # use getServicesLogPaths() from config to store a list of paths to files from CONFIG.YAML
 TARGETED_LOG_FILE = config.getServicesLogPaths()
 
