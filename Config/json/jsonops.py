@@ -48,12 +48,10 @@ def write_to_json(data):
 
                 print(f"Error when writing to JSON Log file | Error {e}")
 
-# function to read JSON file
 def read_json_log():
 
     # Try - Except block for open json file operation
     try:
-
         # Open JSON using JSON_LOG_DIR var as json
         with open(json_log_filepath, 'r', encoding='utf-8') as file:
 
