@@ -39,13 +39,14 @@ def write_to_json(data):
 
                     # file.write(json.dumps(latest_data, indent=4))
 
-            # Print to console that logs have been rewritten to JSON
-            print("Wrote to JSON Logs")
+                    json.dump(latest_data, file, indent=4)
 
-    # Catch Exception if something went wrong with the operation
-    except Exception as e:
+                    file.close()
 
-        print(f"Error when writing to JSON Log file | Error {e}")
+                    # json.dump(latest_data, file, indent=4)
+            except Exception as e:
+
+                print(f"Error when writing to JSON Log file | Error {e}")
 
 # function to read JSON file
 def read_json_log():
