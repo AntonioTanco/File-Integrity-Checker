@@ -73,3 +73,15 @@ def read_json_log():
     except Exception as e:
 
         print(f"{e}")
+
+def json_log_entry(uuid: str):
+
+    json_data = read_json_log()
+
+    for entry in json_data['hashing_operations']:
+
+        if entry['UUID'] == uuid:
+
+            print(f"{entry['UUID']} was found")
+            
+            return entry
