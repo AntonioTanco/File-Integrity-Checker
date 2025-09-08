@@ -55,13 +55,20 @@ def read_json_log():
     try:
 
         # Open JSON using JSON_LOG_DIR var as json
-        with open(json_log_filepath, 'r', encoding='utf-8') as json:
-            
-            # store json data in _json_data to return
-            _json_data = json.read()
+        with open(json_log_filepath, 'r', encoding='utf-8') as file:
 
-            # return _json_data
-            return _json_data
+            # store json data in _json_data to return
+            _json_data = json.load(file)
+
+            if _json_data != None:
+
+                json_data = JsonLogData(**_json_data)
+
+                if isinstance(json_data, JsonLogData):
+
+                    json_data = asdict(json_data)
+
+                    return json_data
         
     except Exception as e:
 
