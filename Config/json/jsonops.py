@@ -1,22 +1,43 @@
 from . import json
 from . import json_log_filepath
-from .jsondata import Jsonlog
+from .jsondata import JsonLogData, Jsonlog
 from dataclasses import asdict
 
 # function to write to JSON file
 def write_to_json(data):
 
-    #Write data as a dictionary 
-    data_dict = asdict(data)
+    # Creating a new list var to store Jsonlog Objects in
+    list_of_entries = []
 
-    # Try - Except block
-    try:
+    # Checking if the data passing into the func is an instance of Jsonlog
+    if isinstance(data, Jsonlog):
 
-        # Open JSON filepath | found in __init__.py
-        with open(json_log_filepath, 'w', encoding='utf-8') as file:
+        # Appending the data past in the list var
+        list_of_entries.append(data)
+
+        # Check if read_json_log is not None type
+        if read_json_log != None:
             
-            # Write to JSON file
-            file.write(json.dumps(data_dict, indent=4))
+            # Read the data stored within Integrity_logs.json
+            current_json_data = read_json_log()
+
+            # Iterating through current_json_data['hashing_operations'] to convert dicts into JsonLog Objects
+            for entries in current_json_data['hashing_operations']:
+
+                # Coverting each entry to a JsonLog Object and storing it in var
+                current_data_entries = Jsonlog(**entries)
+
+                # Appending each entry to a list of JsonLog Objects
+                list_of_entries.append(current_data_entries)
+
+            try:
+                with open(json_log_filepath, 'w', encoding='utf-8') as file:
+
+                    latest_data = asdict(JsonLogData(list_of_entries))
+
+                    # print(latest_data)
+
+                    # file.write(json.dumps(latest_data, indent=4))
 
             # Print to console that logs have been rewritten to JSON
             print("Wrote to JSON Logs")
