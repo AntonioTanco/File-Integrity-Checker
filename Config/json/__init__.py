@@ -1,6 +1,9 @@
 from pathlib import Path
 import json as json
 
+from .jsondata import JsonLogData
+from dataclasses import asdict
+
 # Create a mew folder in the defined directory
 json_log_directory = Path(r"C:\Users\smoke\Documents\File Integrity Checker\Logs")
 
@@ -14,8 +17,9 @@ json_log_filepath = json_log_directory / jSON_LOG_FILENAME
 
 if not json_log_filepath.exists():
 
-    # json_log_filepath.touch()
-    json_log_filepath.write_text(json.dumps({}, indent=4))
+    new_json_data = JsonLogData()
+
+    json_log_filepath.write_text(json.dumps(asdict(new_json_data), indent=4))
 
 # elif json_log_filepath.exists():
 

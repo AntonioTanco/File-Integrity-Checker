@@ -6,6 +6,7 @@ import Utils.logs as syslog
 from Utils.uuid import generate_random_uuid
 from Utils.system import get_nodes_name
 import Utils.system.check_if_file_exist as system
+import Utils.system.check_sys_time as systime
 
 # use getServicesLogPaths() from config to store a list of paths to files from CONFIG.YAML
 TARGETED_LOG_FILE = config.getServicesLogPaths()
@@ -29,6 +30,7 @@ def run_hash_computation():
 
         operations = _json.Jsonlog(hostname=get_nodes_name(),
                                    UUID=hashops_uuid,
+                                   timestamp=systime.get_sys_utc_time(),
                                    targeted_paths=TARGETED_LOG_FILE, 
                                    targeted_services=TARGETED_SERVICE_NAMES, 
                                    hashes_generated=cal_hash)
@@ -38,7 +40,7 @@ def run_hash_computation():
     print("test")
 
         # print to console - hashes were successfully calculated for the targeted services after hashes were calculated
-        # syslog.logging.info(f"Calculated hashes successfully for: {TARGETED_SERVICE_NAMES}")
+    syslog.logging.info(f"Calculated hashes successfully for: {TARGETED_SERVICE_NAMES}")
 
 if __name__ == "__main__":
     run_hash_computation()

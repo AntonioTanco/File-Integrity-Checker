@@ -3,7 +3,8 @@
 
 # from Config import yaml
 from Utils.logs import logging as syslog
-import hashlib 
+from Config.json.jsonops import json_log_entry
+import hashlib
 
 #Defining the buff size used for file operations
 BUFF_SIZE = 65536
@@ -49,3 +50,15 @@ def getFilesHash(logs_path: list):
 def getListOfHashes(files):
 
     getFilesHash(files)
+
+def compare_hashes(uuid : str, uuid2: str):
+
+    results = {}
+
+    entry1 = json_log_entry(uuid=uuid)
+
+    entry2 = json_log_entry(uuid=uuid2)
+
+    if entry1['hashes_generated'] == entry2['hashes_generated']:
+
+        print("this is the exact same file as before")
