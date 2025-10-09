@@ -24,6 +24,7 @@ def run_hash_computation():
     # Checking if files listed in YAML Config exist within the system
     if file_path_exist == True:
 
+        # calling generate_random_uuid to generate a UUID for this hashing operation
         hashops_uuid = generate_random_uuid()
         # calculate and return hash of all the files present in YAML Config
         cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
