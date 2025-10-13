@@ -19,8 +19,15 @@ class TargetedServiceConfig():
 class yamlconfig():
     targeted_services: List[TargetedServiceConfig]
 
-# Check if YAML Config does not exist
-if not os.path.exists(YAML_FILE_NAME):
+if yaml_config.is_file():
+
+    logging.info(f"{yaml_config} was found...")
+
+elif yaml_config.is_file == False:
+
+    logging.info(f"Creating {yaml_config}...")
+
+    yaml_config.touch()
 
     sample_data = [TargetedServiceConfig(service_name="test_service", service_files=["SAMPLE/PATH"])]
 
@@ -32,7 +39,7 @@ if not os.path.exists(YAML_FILE_NAME):
     try:
 
         # Opening a new file within the system
-        with open(YAML_FILE_NAME, 'w') as file:
+        with open(yaml_config, 'w') as file:
 
             # Creating data var to dump 'config_data' into YAML file named: YAML_FILE_NAME
             yaml.safe_dump(yaml_config, file)
@@ -40,7 +47,7 @@ if not os.path.exists(YAML_FILE_NAME):
             # yamlfile.write(data)
 
             # Logging to console the YAML file was created
-            logging.info(f"{YAML_FILE_NAME} was created.")
+            logging.info(f"{yaml_config} was created.")
 
             # Closing the file after it has been written to
             file.close()
@@ -50,4 +57,36 @@ if not os.path.exists(YAML_FILE_NAME):
 
         # Print to console the Exception
         print(f"An unexpected error occurred while creating config.yaml: {e}")
+# Check if YAML Config does not exist
+# if not os.path.exists(YAML_FILE_NAME):
+
+#     sample_data = [TargetedServiceConfig(service_name="test_service", service_files=["SAMPLE/PATH"])]
+
+#     yaml_config = asdict(yamlconfig(targeted_services=sample_data))
+
+#     # Try-Except the operation of creating a new YAML Config
+#     try:
+
+#         # Opening a new file within the system
+#         with open(YAML_FILE_NAME, 'w') as file:
+
+#             # Creating data var to dump 'config_data' into YAML file named: YAML_FILE_NAME
+#             yaml.safe_dump(yaml_config, file)
+
+#             location = file.name()
+
+#             # yamlfile.write(data)
+
+#             # Logging to console the YAML file was created
+#             logging.info(f"{YAML_FILE_NAME} was created.")
+
+#             # Closing the file after it has been written to
+#             file.close()
+#         #Set global var to path to config for reference later in program
+
+#     # Excepts any error that may occur when trying to create the YAML file in the event it fails
+#     except Exception as e:
+
+#         # Print to console the Exception
+#         print(f"An unexpected error occurred while creating config.yaml: {e}")
     
