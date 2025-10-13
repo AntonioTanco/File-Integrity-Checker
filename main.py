@@ -9,6 +9,12 @@ from Utils.healthcheck.healthchecker import HealthChecker
 import Utils.system.check_if_file_exist as system
 import Utils.system.check_sys_time as systime
 
+# creating HealthChecker Object to perform healthcheck
+healthcheck = HealthChecker(enabled=True)
+
+# calling perform_healthcheck() to start health check
+healthcheck.perform_healthcheck()
+
 # use getServicesLogPaths() from config to store a list of paths to files from CONFIG.YAML
 TARGETED_LOG_FILE = config.getServicesLogPaths()
 
