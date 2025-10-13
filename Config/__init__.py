@@ -1,5 +1,5 @@
 import yaml
-import os
+from pathlib import Path
 from Utils.logs import logging
 from dataclasses import dataclass, asdict, field
 from typing import List
