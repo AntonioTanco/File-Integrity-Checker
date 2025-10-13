@@ -5,7 +5,8 @@ from dataclasses import dataclass, asdict, field
 from typing import List
 
 # Declaring name for YAML Config
-YAML_FILE_NAME = 'config.yaml'
+yaml_config = Path('config.yaml')
+yaml_config_filepath = yaml_config.absolute()
 
 # Defining TargetedServiceConfig data structure for type safety
 @dataclass
