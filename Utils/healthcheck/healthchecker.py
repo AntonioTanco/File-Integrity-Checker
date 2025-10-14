@@ -1,6 +1,6 @@
 from pathlib import Path
 from Utils.system import check_if_file_exist
-from Config import yaml_config_filepath
+from Config import _yaml_config_exist
 
 class HealthChecker():
 
@@ -16,7 +16,7 @@ class HealthChecker():
 
             print("[Health Check] - Checking if config.yaml exist...")
 
-            if yaml_config_filepath.exists():
+            if _yaml_config_exist == True:
 
                 print("[Health Check] - config.yaml does exist")
             else: 
