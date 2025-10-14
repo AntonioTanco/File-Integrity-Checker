@@ -1,10 +1,7 @@
-import Utils.hashing.hashops as hash
-import Config.configops as config
-import Config.json.jsondata as _json
-import Config.json.jsonops as json
+import typer
 import Utils.logs as syslog
-from Utils.uuid import generate_random_uuid
-from Utils.system import get_nodes_name
+from Utils.hashing.hashops import run_hash_computation
+from Config import _yaml_config_exist, yaml_config_filepath
 from Utils.healthcheck.healthchecker import HealthChecker
 import Utils.system.check_if_file_exist as system
 import Utils.system.check_sys_time as systime
@@ -12,68 +9,33 @@ import typer
 
 app = typer.Typer()
 
-# use getServicesLogPaths() from config to store a list of paths to files from CONFIG.YAML
-TARGETED_LOG_FILE = config.getServicesLogPaths()
+@app.callback()
+def documentation():
+    """
+    This is a CLI Tool used to monitor the hash values of your hosted services either in the cloud or on-premise.
 
-# use getServicesName() from config to store a list of paths to files from CONFIG.YAML
-TARGETED_SERVICE_NAMES = config.getServicesName()
+    documentation:
+    """
 
-# run check on TARGETED_LOG_FILE to see if files exist within the system
-file_path_exist = system.check_if_file_exist(TARGETED_LOG_FILE)
+@app.command()
+def init():
 
-# Creating function to run hash computation on program execution
-def run_hash_computation():
+    print(yaml_config_filepath)
 
-    config.readYamlConfig()
-    # Checking if files listed in YAML Config exist within the system
-    if file_path_exist == True:
-
-        # calling generate_random_uuid to generate a UUID for this hashing operation
-        hashops_uuid = generate_random_uuid()
-        # calculate and return hash of all the files present in YAML Config
-        cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
-
-        operations = _json.Jsonlog(hostname=get_nodes_name(),
-                                   UUID=hashops_uuid,
-                                   timestamp=systime.get_sys_utc_time(),
-                                   targeted_paths=TARGETED_LOG_FILE, 
-                                   targeted_services=TARGETED_SERVICE_NAMES, 
-                                   hashes_generated=cal_hash)
-
-        json.write_to_json(operations)
-
-    print("test")
-
-        # print to console - hashes were successfully calculated for the targeted services after hashes were calculated
-    syslog.logging.info(f"Calculated hashes successfully for: {TARGETED_SERVICE_NAMES}")
-
+    if _yaml_config_exist == True:
+        syslog.logging.info(f"{yaml_config_filepath} was found")
+    else:
+        syslog.logging.warning(f"{yaml_config_filepath} was not found")
+    
 @app.command()
 def run_hash():
-    # config.readYamlConfig()
-    # Checking if files listed in YAML Config exist within the system
-    if file_path_exist == True:
 
-        # calling generate_random_uuid to generate a UUID for this hashing operation
-        hashops_uuid = generate_random_uuid()
-        # calculate and return hash of all the files present in YAML Config
-        cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
-
-        operations = _json.Jsonlog(hostname=get_nodes_name(),
-                                   UUID=hashops_uuid,
-                                   timestamp=systime.get_sys_utc_time(),
-                                   targeted_paths=TARGETED_LOG_FILE, 
-                                   targeted_services=TARGETED_SERVICE_NAMES, 
-                                   hashes_generated=cal_hash)
-
-        json.write_to_json(operations)
-
-    print("test")
-
-        # print to console - hashes were successfully calculated for the targeted services after hashes were calculated
-    syslog.logging.info(f"Calculated hashes successfully for: {TARGETED_SERVICE_NAMES}")
-
+    # Run hash computation against config.yaml
+    run_hash_computation()
+    
 @app.command()
 def healthcheck():
+
     # creating HealthChecker Object to perform healthcheck
     healthcheck = HealthChecker(enabled=True)
 
@@ -82,4 +44,3 @@ def healthcheck():
 
 if __name__ == "__main__":
     app()
-    # run_hash_computation()
