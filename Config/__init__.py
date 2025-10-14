@@ -6,7 +6,7 @@ from typing import List
 
 # Declaring name for YAML Config
 yaml_config = Path('config.yaml')
-yaml_config_filepath = yaml_config.absolute()
+yaml_config_filepath = str(yaml_config.resolve())
 
 # Defining TargetedServiceConfig data structure for type safety
 @dataclass
