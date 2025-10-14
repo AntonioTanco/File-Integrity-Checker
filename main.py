@@ -47,5 +47,39 @@ def run_hash_computation():
         # print to console - hashes were successfully calculated for the targeted services after hashes were calculated
     syslog.logging.info(f"Calculated hashes successfully for: {TARGETED_SERVICE_NAMES}")
 
+@app.command()
+def run_hash():
+    # config.readYamlConfig()
+    # Checking if files listed in YAML Config exist within the system
+    if file_path_exist == True:
+
+        # calling generate_random_uuid to generate a UUID for this hashing operation
+        hashops_uuid = generate_random_uuid()
+        # calculate and return hash of all the files present in YAML Config
+        cal_hash = hash.getFilesHash(TARGETED_LOG_FILE)
+
+        operations = _json.Jsonlog(hostname=get_nodes_name(),
+                                   UUID=hashops_uuid,
+                                   timestamp=systime.get_sys_utc_time(),
+                                   targeted_paths=TARGETED_LOG_FILE, 
+                                   targeted_services=TARGETED_SERVICE_NAMES, 
+                                   hashes_generated=cal_hash)
+
+        json.write_to_json(operations)
+
+    print("test")
+
+        # print to console - hashes were successfully calculated for the targeted services after hashes were calculated
+    syslog.logging.info(f"Calculated hashes successfully for: {TARGETED_SERVICE_NAMES}")
+
+@app.command()
+def healthcheck():
+    # creating HealthChecker Object to perform healthcheck
+    healthcheck = HealthChecker(enabled=True)
+
+    # calling perform_healthcheck() to start health check
+    healthcheck.perform_healthcheck()
+
 if __name__ == "__main__":
-    run_hash_computation()
+    app()
+    # run_hash_computation()
