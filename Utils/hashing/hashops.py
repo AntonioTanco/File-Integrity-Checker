@@ -2,9 +2,28 @@
 # import sys
 
 # from Config import yaml
-from Utils.logs import logging as syslog
+import Config.json.jsondata as _json
+import Config.json.jsonops as json
+import Config.configops as config
+import Utils.system.check_if_file_exist as system
+import Utils.system.check_sys_time as systime
+
+import Utils.logs as syslog
 from Config.json.jsonops import json_log_entry
+from Config import yaml_config_filepath
 import hashlib
+
+from Utils.uuid import generate_random_uuid
+from Utils.system import get_nodes_name
+
+# Defining dependencies for run_hash_computation function
+__TARGETED_LOG_FILE = config.getServicesLogPaths()
+
+# use getServicesName() from config to store a list of paths to files from CONFIG.YAML
+__TARGETED_SERVICE_NAMES = config.getServicesName()
+
+# run check on TARGETED_LOG_FILE to see if files exist within the system
+__file_path_exist = system.check_if_file_exist(yaml_config_filepath)
 
 #Defining the buff size used for file operations
 BUFF_SIZE = 65536
@@ -45,15 +64,13 @@ def getFilesHash(logs_path: list):
     
     elif logs_path is None:
 
-        syslog.critical("No valid paths listed in YAML Config")
+        syslog.logging.critical("No valid paths listed in YAML Config")
 
 def getListOfHashes(files):
 
     getFilesHash(files)
 
 def compare_hashes(uuid : str, uuid2: str):
-
-    results = {}
 
     entry1 = json_log_entry(uuid=uuid)
 
@@ -62,3 +79,26 @@ def compare_hashes(uuid : str, uuid2: str):
     if entry1['hashes_generated'] == entry2['hashes_generated']:
 
         print("this is the exact same file as before")
+
+def run_hash_computation():
+
+    config.readYamlConfig()
+    # Checking if files listed in YAML Config exist within the system
+    if __file_path_exist == True:
+
+        # calling generate_random_uuid to generate a UUID for this hashing operation
+        hashops_uuid = generate_random_uuid()
+        # calculate and return hash of all the files present in YAML Config
+        cal_hash = getFilesHash(__TARGETED_LOG_FILE)
+
+        operations = _json.Jsonlog(hostname=get_nodes_name(),
+                                   UUID=hashops_uuid,
+                                   timestamp=systime.get_sys_utc_time(),
+                                   targeted_paths=__TARGETED_LOG_FILE, 
+                                   targeted_services=__TARGETED_SERVICE_NAMES, 
+                                   hashes_generated=cal_hash)
+
+        json.write_to_json(operations)
+
+    # print to console - hashes were successfully calculated for the targeted services after hashes were calculated
+    syslog.logging.info(f"Calculated hashes successfully for: {__TARGETED_SERVICE_NAMES}")
