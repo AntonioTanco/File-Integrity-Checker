@@ -1,24 +1,57 @@
 from pathlib import Path
 from Utils.logs import logging
 
-def check_if_file_exist(path_to_file: list):
+def check_if_file_exist(path_to_files):
 
-    for file in path_to_file:
+    if isinstance(path_to_files, str):
+        # Perform this operation below
 
-        log_file = Path(file)
+        path_to_check = Path(path_to_files)
 
-        log_file_name = log_file.name
+        test = path_to_check.resolve()
 
-        if log_file.is_file():
+        print(f"this is the abs path: {test}")
 
-            logging.info(f"{log_file_name} " + "exist as a file in system")
+        if path_to_check.exists() == True:
 
-        else:
-
-            logging.warning(f"{log_file_name} " + "does not exist as a file in system")
+            return True
+        
+        elif path_to_check.exists() == False:
 
             return False
+    
+    elif isinstance(path_to_files, list):
+         
+         for file in path_to_files:
+              
+              file_to_check = Path(file)
 
-    return True
+              file_name = file_to_check.name
+
+              if file_to_check.is_file():
+                   
+                   logging.info(f"{file_name} " + "exist as a file in system")
+              else:
+                   logging.warning(f"{file_name} does not exist as a file in this system")
+         return True
+
+
+    # for file in path_to_file:
+
+    #     log_file = Path(file)
+
+    #     log_file_name = log_file.name
+
+    #     if log_file.is_file():
+
+    #         logging.info(f"{log_file_name} " + "exist as a file in system")
+
+    #     else:
+
+    #         logging.warning(f"{log_file_name} " + "does not exist as a file in system")
+
+    #         return False
+
+    # return True
 
 
