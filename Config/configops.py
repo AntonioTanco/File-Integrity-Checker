@@ -14,8 +14,6 @@ def readYamlConfig():
             
             data = Config.yaml.safe_load(file)
 
-            # print(data)
-
             # closes the YAML file
             file.close()
 
