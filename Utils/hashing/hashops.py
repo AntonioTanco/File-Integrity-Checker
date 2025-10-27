@@ -102,3 +102,5 @@ def run_hash_computation():
 
     # print to console - hashes were successfully calculated for the targeted services after hashes were calculated
     syslog.logging.info(f"Calculated hashes successfully for: {__TARGETED_SERVICE_NAMES}")
+
+    return {"hashing operation was completed"}
