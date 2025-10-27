@@ -6,3 +6,4 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M",
     level=logging.INFO
 )
+logging.getLogger('apscheduler').setLevel(logging.DEBUG)
