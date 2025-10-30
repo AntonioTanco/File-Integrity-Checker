@@ -1,9 +1,9 @@
 import typer
-import time
 import Utils.logs as syslog
+import time
 
-from Automation.jobs.run_hash_job import run_hash_job
-from Utils.hashing.hashops import run_hash_computation
+from Utils.system.system_threads import start_hash_thread
+
 from Config import _yaml_config_exist, yaml_config_filepath
 from Utils.healthcheck.healthchecker import HealthChecker
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -19,25 +19,28 @@ def documentation():
 
     documentation:
     """
+    
 @app.command()
 def automate():
 
-    # print(yaml_config_filepath)
-    # automation.add_job(run_hash_job(), trigger='interval', minutes=1)
+        print("Starting automation engine...")
 
-# declearing a BackgroundScheduler() object to use within ./Automation/jobs
+        automation.add_job(start_hash_thread, 'interval', seconds= 30, name="hashing_task")
 
-    automation.add_job(run_hash_job, 'interval', seconds= 30, name="hashing_task")
-    print("Starting automation engine...")
+        automation.start()
 
-    automation.start()
+        print("Automation engined has started...")
 
-    print("Automation engined has started...")
+        print(f"Here are the jobs found: {automation.print_jobs}")
 
-    print(f"Here are the jobs found: {automation.print_jobs}")
-
-    while True:
-        time.sleep(1)
+        try:
+            while start_hash_thread != False:
+                time.sleep(1)  # Simulate some work or delay
+        except KeyboardInterrupt:
+            print("\nKeyboard Interrupt detected. Exiting loop.")
+            # You can add any cleanup code here before the program potentially exits or continues
+        finally:
+            print("Program execution finished.")
 
 @app.command()
 def init():
@@ -54,7 +57,7 @@ def init():
 @app.command()
 def run_hash():
     # Run hash computation against config.yaml
-    run_hash_computation()
+    start_hash_thread()
     
 @app.command()
 def healthcheck():
