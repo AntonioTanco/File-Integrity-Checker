@@ -11,3 +11,9 @@ def start_hash_thread():
     hashing_thread.start()
 
     hashing_thread.join()
+
+    status = hashing_thread.is_alive
+
+    if status == True:
+
+        return True
