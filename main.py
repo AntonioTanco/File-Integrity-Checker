@@ -3,6 +3,7 @@ import Utils.logs as syslog
 import time
 
 from Utils.system.system_threads import start_hash_thread
+from Utils.system.system_backup import SystemBackUp
 
 from Config import _yaml_config_exist, yaml_config_filepath
 from Utils.healthcheck.healthchecker import HealthChecker
@@ -67,6 +68,15 @@ def healthcheck():
 
     # calling perform_healthcheck() to start health check
     healthcheck.perform_healthcheck()
+
+@app.command()
+def backup():
+
+    # creating SystemBackUp Object
+    backup = SystemBackUp()
+
+    # calling start_backup() to perform backup of config.yaml
+    backup.start_backup(yaml_config_filepath)
 
 if __name__ == "__main__":
     app()
