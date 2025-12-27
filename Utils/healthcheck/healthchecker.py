@@ -1,4 +1,4 @@
-from Config import _yaml_config_exist
+from Config import yaml_config_exist
 
 class HealthChecker():
 
@@ -14,7 +14,7 @@ class HealthChecker():
 
             print("[Health Check] - Checking if config.yaml exist...")
 
-            if _yaml_config_exist == True:
+            if yaml_config_exist == True:
 
                 print("[Health Check] - config.yaml does exist")
             else: 
