@@ -52,7 +52,7 @@ def init():
 
     automation.remove_all_jobs()
 
-    if _yaml_config_exist == True:
+    if  yaml_config_exist == True:
         syslog.logging.info(f"{yaml_config_filepath} was found")
     else:
         syslog.logging.warning(f"{yaml_config_filepath} was not found")
@@ -80,5 +80,10 @@ def backup(path: Annotated[str, typer.Argument()]):
     # calling start_backup() to perform backup of config.yaml
     status = backup.start_backup(yaml_config_filepath, path)
 
+    if status == True:
+
+        syslog.logging.info("The backup was successful")
+
+    print(readYamlConfig())
 if __name__ == "__main__":
     app()
