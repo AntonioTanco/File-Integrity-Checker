@@ -82,7 +82,7 @@ def backup(path: Annotated[str, typer.Argument()]):
 
     if status == True:
 
-        syslog.logging.info("The backup was successful")
+        syslog.logging.info("The backup was sucessful")
 
     print(readYamlConfig())
 if __name__ == "__main__":
