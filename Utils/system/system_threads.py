@@ -17,3 +17,7 @@ def start_hash_thread():
     if status == True:
 
         return True
+    
+    elif status != True:
+        
+        return False

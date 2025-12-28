@@ -7,7 +7,7 @@ from typing import List
 # Declaring name for YAML Config
 yaml_config = Path('config.yaml')
 yaml_config_filepath = str(yaml_config.resolve())
-_yaml_config_exist = bool
+yaml_config_exist = bool
 
 # Defining TargetedServiceConfig data structure for type safety
 @dataclass
@@ -22,9 +22,9 @@ class yamlconfig():
 
 if yaml_config.is_file():
 
-    logging.info(f"{yaml_config} was found...")
+    yaml_config_exist = True
 
-    _yaml_config_exist = True
+    logging.info(f"{yaml_config} was found...")
 
 elif yaml_config.is_file == False:
 
