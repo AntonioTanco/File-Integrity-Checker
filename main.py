@@ -2,10 +2,12 @@ import typer
 import Utils.logs as syslog
 import time
 
+from typing_extensions import Annotated
 from Utils.system.system_threads import start_hash_thread
 from Utils.system.system_backup import SystemBackUp
 
-from Config import _yaml_config_exist, yaml_config_filepath
+from Config import yaml_config_exist, yaml_config_filepath
+from Config.configops import readYamlConfig
 from Utils.healthcheck.healthchecker import HealthChecker
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -70,13 +72,13 @@ def healthcheck():
     healthcheck.perform_healthcheck()
 
 @app.command()
-def backup():
+def backup(path: Annotated[str, typer.Argument()]):
 
     # creating SystemBackUp Object
-    backup = SystemBackUp()
+    backup = SystemBackUp(enabled=True)
 
     # calling start_backup() to perform backup of config.yaml
-    backup.start_backup(yaml_config_filepath)
+    status = backup.start_backup(yaml_config_filepath, path)
 
 if __name__ == "__main__":
     app()

@@ -27,6 +27,8 @@ class SystemBackUp():
                 logging.info(f"{backup_file.name} was created.")
 
                 backup_file.close
+            
+            return True
                 
         except Exception as e:
 
